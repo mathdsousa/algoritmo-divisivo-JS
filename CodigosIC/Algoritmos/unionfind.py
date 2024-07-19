@@ -15,6 +15,7 @@ class UnionFind:
     
     def Find(self, value) -> Set:
         return self.FindR(self.sets[value])
+        
     # def Height(self, point) -> int: 
     #     counter = 0
     #     father = self.sets[point].father
