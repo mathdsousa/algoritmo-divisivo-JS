@@ -14,8 +14,8 @@ class MST_Kruskal:
 
         for vertex1, vertex2, weight_edge in edgedSorted:
             if sets.Find(vertex1) != sets.Find(vertex2):
-                sets.Union(vertex1,vertex2)
-                R.add_edge(vertex1,  vertex2, weight = weight_edge)
+                sets.Union(vertex1, vertex2)
+                R.add_edge(vertex1, vertex2, weight=weight_edge)
         
         return R
         
