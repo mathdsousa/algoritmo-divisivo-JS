@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import euclidean
 from scipy.spatial.distance import jensenshannon
-from mstkruskal import MST_Kruskal
+from MST_kruskal import MST_Kruskal
 
 def plot_graph(graph, weights=False):
     if weights:
@@ -42,7 +42,6 @@ def _complete_graph(X, metric):
     return graph
 
 class MST_DivisiveClustering:
-
     def __init__(self, n_clusters=2, metric='euclidean'):
         self.n_clusters = n_clusters
         self.metric = metric
