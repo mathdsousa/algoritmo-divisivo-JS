@@ -16,6 +16,6 @@ df = pd.DataFrame(data)
 print(df)
 
 # Teste do algoritmo MST_DivisiveClustering
-MST_DivisiveClustering = MST_DivisiveClustering(n_clusters=3, metric='jensenshannon')
+MST_DivisiveClustering = MST_DivisiveClustering(n_clusters=3, metric='euclidean')
 df['Cluster'] = MST_DivisiveClustering.fit_predict(df.drop(columns='Objeto'))
 print(df)

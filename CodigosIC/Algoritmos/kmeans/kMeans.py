@@ -14,14 +14,31 @@ def _create_seeds(X, num_clusters, init='random'):
         seeds = X[:num_clusters] # Use the first num_clusters samples as seeds
     return seeds
 
-def _update_labels(X, seeds, labels):
+def _update_clusters(X, seeds, clusters):
+    updated = False
+
     for i in range(X.shape[0]):
         distances = [euclidean(X[i], seed) for seed in seeds]
-        labels[i] = np.argmin(distances)
+        newlabel = np.argmin(distances)
+        if updated is False and not np.array_equal(newlabel, clusters[i]):
+            updated = True
+        clusters[i] = newlabel
+    
+    return updated
 
-def _update_seeds(X, seeds, labels):
+def _update_seeds(X, seeds, clusters):
+    updated = False
+
     for i in range(seeds.shape[0]):
-        seeds[i] = np.mean(X[labels == i], axis=0)
+        if np.any(clusters == i): # Avoiding cases with empty clusters 
+            newseed = np.mean(X[clusters == i], axis=0)
+        else:
+            newseed = seeds[i]
+        if updated is False and not np.array_equal(newseed, seeds[i]):
+            updated = True
+        seeds[i] = newseed
+
+    return updated
 
 class KMeans:
     def __init__(self, num_clusters=2, num_interations=200, init='random'):
@@ -36,10 +53,27 @@ class KMeans:
     
         seeds = _create_seeds(X, self.num_clusters, self.init)
 
-        labels = -1 * np.ones(X.shape[0])
+        clusters = np.ones(X.shape[0])
         count = 0
+        update_clusters = True
+        update_seeds = True
 
-        while True:
-            _update_labels(X, seeds, labels)
-            _update_seeds(X, seeds, labels)
+        while (count < self.num_interations):
+            print("Atualizando Clusters")
+            update_clusters = _update_clusters(X, seeds, clusters)
+            print(f'Atualizou? {update_clusters}')
+            if (not update_clusters):
+                break
+            print("Atualizando Sementes")
+            update_seeds = _update_seeds(X, seeds, clusters)
+            print(f'Atualizou? {update_seeds}')
+            if (not update_seeds):
+                break
+            count += 1
+            print(f'Iteração {count}')
+
+
+        self.seeds = seeds
+        return clusters 
+        
 
