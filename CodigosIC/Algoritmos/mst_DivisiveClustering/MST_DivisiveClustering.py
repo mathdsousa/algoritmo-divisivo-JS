@@ -46,7 +46,7 @@ class MST_DivisiveClustering:
         self.n_clusters = n_clusters
         self.metric = metric
 
-    def fit_predict(self, X):
+    def fit(self, X):
         # Verifying whether X is an np.ndarray
         if not isinstance(X, np.ndarray):
             X = X.values # Convert the DataFrame to NumPy
@@ -79,4 +79,4 @@ class MST_DivisiveClustering:
                 clusters[i] = cluster_count
             cluster_count +=1
 
-        return clusters
+        self.labels_ = clusters.astype(int)

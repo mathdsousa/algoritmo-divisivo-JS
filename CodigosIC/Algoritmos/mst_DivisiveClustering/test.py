@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from sklearn.cluster import AgglomerativeClustering
 from MST_DivisiveClustering import MST_DivisiveClustering
 
 # Criando um DataFrame com 10 objetos e 4 atributos intervalares
@@ -17,5 +18,15 @@ print(df)
 
 # Teste do algoritmo MST_DivisiveClustering
 MST_DivisiveClustering = MST_DivisiveClustering(n_clusters=3, metric='euclidean')
-df['Cluster'] = MST_DivisiveClustering.fit_predict(df.drop(columns='Objeto'))
-print(df)
+MST_DivisiveClustering.fit(df.drop(columns='Objeto'))
+
+# Teste do algoritmo AgglomerativeClustering (para comparação)
+AgglomerativeClustering = AgglomerativeClustering(n_clusters=3, linkage='single')
+AgglomerativeClustering.fit(df.drop(columns='Objeto'))
+
+print("Labels do MST_DivisiveClustering:")
+print(MST_DivisiveClustering.labels_)
+print("Labels do AgglomerativeClustering:")
+print(AgglomerativeClustering.labels_)
+
+
