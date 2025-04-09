@@ -1,6 +1,9 @@
+from cProfile import label
 import pandas as pd
 import numpy as np
-from KMeans import KMeans
+from kMeans import KMeans as kMedias
+from sklearn.cluster import KMeans
+from sklearn.metrics import adjusted_rand_score
 
 # Criando um DataFrame com 10 objetos e 4 atributos intervalares
 np.random.seed(42)  # Garantir reprodutibilidade
@@ -13,9 +16,16 @@ data = {
 }
 
 df = pd.DataFrame(data)
-print(df)
 
-# Teste do algoritmo MST_DivisiveClustering
-KMeans = KMeans(num_clusters=3, init='random')
-df['Cluster'] = KMeans.fit_predict(df.drop(columns='Objeto'))
-print(df)
+# Teste do algoritmo kMeans
+kMeans = kMedias(num_clusters=3, init='k-means++', max_iter=200)
+kMeans.fit(df.drop(columns='Objeto'))
+
+# Usando a scilit-learn para comparação - pura curiosidade
+kMeans_sklearn = KMeans(n_clusters=3, n_init=1, max_iter=200)
+kMeans_sklearn.fit(df.drop(columns='Objeto'))
+
+print("Labels do kMeans (implementação própria):")
+print(kMeans.labels_)   
+print("Labels do kMeans (scikit-learn):")   
+print(kMeans_sklearn.labels_)
