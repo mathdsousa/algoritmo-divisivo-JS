@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import euclidean
 from scipy.spatial.distance import jensenshannon
-from MST_kruskal import MST_Kruskal
+from .MST_kruskal import MST_Kruskal
 
 def plot_graph(graph, weights=False):
     if weights:

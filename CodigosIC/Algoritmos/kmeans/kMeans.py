@@ -10,7 +10,7 @@ def _init_kmeans_plus_plus(X, num_clusters):
     seeds = []
 
     # Randomly select the first seed
-    seeds.append(X[np.random.randint(X.shape[0]), :])
+    seeds.append(X[np.random.randint(X.shape[0], replace=False), :])
 
     # Select the remaining seeds
     for c_id in range(num_clusters - 1):
@@ -41,7 +41,7 @@ def _init_kmeans_plus_plus(X, num_clusters):
 
 def _create_seeds(X, num_clusters, init='random'):
     if init == 'random':
-        seeds = X[np.random.choice(X.shape[0], num_clusters)] # Randomly select the seeds
+        seeds = X[np.random.choice(X.shape[0], num_clusters, replace=False)] # Randomly select the seeds
     elif init == 'k-means++':
         seeds = _init_kmeans_plus_plus(X, num_clusters)
     else:

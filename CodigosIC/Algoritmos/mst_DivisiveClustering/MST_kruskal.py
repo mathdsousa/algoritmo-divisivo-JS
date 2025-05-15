@@ -1,5 +1,5 @@
 import networkx as nx
-from unionfind import UnionFind
+from .unionfind import UnionFind
 
 class MST_Kruskal:
     def __init__(self, graph) -> None:
