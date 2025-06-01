@@ -44,7 +44,7 @@ print("Iniciando os testes")
 #X = skdata.fetch_openml(name='AP_Colon_Omentum', version=1)
 #X = skdata.fetch_openml(name='AP_Breast_Omentum', version=1)
 #X = skdata.fetch_openml(name='AP_Omentum_Kidney', version=1)
-X = skdata.fetch_openml(name='AP_Omentum_Uterus', version=1)
+#X = skdata.fetch_openml(name='AP_Omentum_Uterus', version=1)
 #X = skdata.fetch_openml(name='AP_Colon_Prostate', version=1)
 #X = skdata.fetch_openml(name='AP_Lung_Uterus', version=1)
 #X = skdata.fetch_openml(name='AP_Breast_Prostate', version=1)
@@ -64,7 +64,7 @@ X = skdata.fetch_openml(name='AP_Omentum_Uterus', version=1)
 #X = skdata.fetch_openml(name='musk', version=1)
 #X = skdata.fetch_openml(name='Speech', version=1)
 #X = skdata.fetch_openml(name='MNIST_784', version=1)    # 5% das amostras
-#X = skdata.fetch_openml(name='Fashion-MNIST', version=1)    # 5% das amostras
+X = skdata.fetch_openml(name='Fashion-MNIST', version=1)    # 5% das amostras
 
 dados = X['data']
 target = X['target']  
@@ -115,7 +115,7 @@ MST_Div_JS = MST_DivisiveClustering(n_clusters=c, metric='jensenshannon')
 MST_Div_JS.fit(dados)
 
 print('Iniciando o teste do algoritmo HDBSCAN')
-hdb = HDBSCAN(min_samples=3)
+hdb = HDBSCAN(min_samples=2, min_cluster_size=2, metric='euclidean', cluster_selection_method='eom')
 hdb.fit(dados)
 
 print('Iniciando o teste do algoritmo KMeans')

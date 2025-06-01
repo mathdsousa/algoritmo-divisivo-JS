@@ -10,7 +10,8 @@ def _init_kmeans_plus_plus(X, num_clusters):
     seeds = []
 
     # Randomly select the first seed
-    seeds.append(X[np.random.randint(X.shape[0], replace=False), :])
+    index = np.random.choice(X.shape[0], replace=False)
+    seeds.append(X[index, :])
 
     # Select the remaining seeds
     for c_id in range(num_clusters - 1):
@@ -67,7 +68,7 @@ def _update_seeds(X, seeds, clusters):
         if np.any(clusters == i): # Avoiding cases with empty clusters 
             newseed = np.mean(X[clusters == i], axis=0)
         else:
-            newseed = seeds[i]
+            newseed = X[np.random.choice(X.shape[0])]
         if updated is False and not np.array_equal(newseed, seeds[i]):
             updated = True
         seeds[i] = newseed
@@ -96,12 +97,9 @@ class KMeans:
             #print("Atualizando Clusters")
             update_clusters = _update_clusters(X, seeds, clusters)
             #print(f'Atualizou? {update_clusters}')
-            if (not update_clusters):
-                break
-            #print("Atualizando Sementes")
             update_seeds = _update_seeds(X, seeds, clusters)
             #print(f'Atualizou? {update_seeds}')
-            if (not update_seeds):
+            if not (update_seeds and update_clusters): 
                 break
             count += 1
             #print(f'Iteração {count}')

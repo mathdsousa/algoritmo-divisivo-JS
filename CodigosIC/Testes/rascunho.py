@@ -155,7 +155,7 @@ def rotula_amostras(T, rotulos):
 # Descomentar apenas uma linha por vez!
 #X = skdata.load_iris()
 #X = skdata.load_wine()
-X = skdata.load_digits()
+#X = skdata.load_digits()
 #X = skdata.fetch_openml(name='AP_Lung_Kidney', version=1)
 #X = skdata.fetch_openml(name='AP_Colon_Kidney', version=1)       
 #X = skdata.fetch_openml(name='AP_Colon_Uterus', version=1)
@@ -169,7 +169,7 @@ X = skdata.load_digits()
 #X = skdata.fetch_openml(name='AP_Lung_Uterus', version=1)
 #X = skdata.fetch_openml(name='AP_Breast_Prostate', version=1)
 #X = skdata.fetch_openml(name='parkinson-speech-uci', version=1)
-#X = skdata.fetch_openml(name='semeion', version=1)
+X = skdata.fetch_openml(name='semeion', version=1)
 #X = skdata.fetch_openml(name='mfeat-factors', version=1)
 #X = skdata.fetch_openml(name='Olivetti_Faces', version=1)
 #X = skdata.fetch_openml(name='oh5.wc', version=1)       
@@ -224,29 +224,27 @@ n = dados.shape[0]
 print('N = ', n)
 print('M = ', m)
 print('C = %d' %c)
-print()
-print('Press enter to continue...')
-input()
 
-print('MST')
-# Extrai MST's (Euclidiana e Jensen-Shannon)
-MST_euc, MST_js = extrai_MST(dados)
 
-print('Euclidean e JS distance based MST')
-# MST based clustering with CH index
-t = mst_clustering_divisive_CH(MST_euc, dados, target)
-tree = mst_clustering_divisive_CH(MST_js, dados, target)
+# print('MST')
+# # Extrai MST's (Euclidiana e Jensen-Shannon)
+# MST_euc, MST_js = extrai_MST(dados)
 
-# Rotula as amostras
-labels = rotula_amostras(t, target)        # CH (Euclidean)
-labs = rotula_amostras(tree, target)       # CH (JS divergence)
+# print('Euclidean e JS distance based MST')
+# # MST based clustering with CH index
+# t = mst_clustering_divisive_CH(MST_euc, dados, target)
+# tree = mst_clustering_divisive_CH(MST_js, dados, target)
 
-# Minha implementação
-print('Iniciando o teste do algoritmo MST_DivisiveClustering_euclidean')
-MST_Div_Euclidean = MST_DivisiveClustering(n_clusters=c, metric='euclidean')
-MST_Div_Euclidean.fit(dados)
+# # Rotula as amostras
+# labels = rotula_amostras(t, target)        # CH (Euclidean)
+# labs = rotula_amostras(tree, target)       # CH (JS divergence)
 
-print(f'São iguais? {np.array_equal(labels, MST_Div_Euclidean.labels_)}')
+# # Minha implementação
+# print('Iniciando o teste do algoritmo MST_DivisiveClustering_euclidean')
+# MST_Div_Euclidean = MST_DivisiveClustering(n_clusters=c, metric='euclidean')
+# MST_Div_Euclidean.fit(dados)
+
+# print(f'São iguais? {np.array_equal(labels, MST_Div_Euclidean.labels_)}')
 
 print('KMeans')
 # K-médias (como depende da inicialização, executamos várias vezes)
