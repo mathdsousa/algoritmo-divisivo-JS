@@ -87,4 +87,4 @@ Os resultados indicam que a combinação **Jensen–Shannon + MST**:
 * é sensível à estrutura global dos dados,
 * e apresenta desempenho competitivo com técnicas tradicionais, especialmente em cenários onde relações entre pontos são melhor modeladas como grafos.
 
---
+---
