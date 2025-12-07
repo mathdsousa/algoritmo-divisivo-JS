@@ -22,33 +22,37 @@ Essa abordagem é especialmente útil para identificar divisões naturais nos da
 ---
 
 ## 🧩 Estrutura do Repositório
+```
+
 CodigosIC/
 │
 ├── Algoritmos/
-│ ├── kmeans/
-│ │ ├── kMeans.py # Implementação do algoritmo K-Means
-│ │ └── test.py # Testes e experimentos usando o K-Means
-│ │
-│ └── mst_DivisiveClustering/
-│ ├── MST_DivisiveClustering.py # Algoritmo completo de clustering divisivo baseado em MST
-│ ├── MST_kruskal.py # Implementação do algoritmo de Kruskal para gerar a MST
-│ ├── set.py # Estruturas auxiliares (ex: WeightedSet)
-│ ├── test.py # Testes do algoritmo MST Divisive Clustering
-│ └── unionfind.py # Estrutura Union-Find (Disjoint Set Union)
+│   ├── kmeans/
+│   │   ├── kMeans.py              # Implementação do algoritmo K-Means
+│   │   └── test.py                # Testes e experimentos usando o K-Means
+│   │
+│   └── mst_DivisiveClustering/
+│       ├── MST_DivisiveClustering.py   # Algoritmo completo de clustering divisivo baseado em MST
+│       ├── MST_kruskal.py              # Implementação do algoritmo de Kruskal para gerar a MST
+│       ├── set.py                      # Estruturas auxiliares (ex: WeightedSet)
+│       ├── test.py                     # Testes do algoritmo MST Divisive Clustering
+│       └── unionfind.py                # Estrutura Union-Find (Disjoint Set Union)
 │
 ├── Testes/
-│ ├── Medianas/ # Experimentos com medianas (códigos adicionais)
-│ ├── Metricas/
-│ │ ├── hipotese.py # Testes de hipótese sobre as métricas
-│ │ ├── main.py # Script principal de execução das métricas
-│ │ ├── mediana.py # Cálculo e análise de medianas
-│ │ └── script.py # Automação de testes e análises
+│   ├── Medianas/                       # Experimentos com medianas (códigos adicionais)
+│   ├── Metricas/
+│   │   ├── hipotese.py                 # Testes de hipótese sobre as métricas
+│   │   ├── main.py                     # Script principal de execução das métricas
+│   │   ├── mediana.py                  # Cálculo e análise de medianas
+│   │   └── script.py                   # Automação de testes e análises
 │
 ├── Relatorio/
-│ └── IC_RelatorioFinal_Matheus.pdf # Relatório final da Iniciação Científica
+│   └── IC_RelatorioFinal_Matheus.pdf   # Relatório final da Iniciação Científica
 │
-├── .gitignore # Configurações de arquivos ignorados pelo Git
-└── README.md # Documentação principal do projeto
+├── .gitignore                           # Configurações de arquivos ignorados pelo Git
+└── README.md                             # Documentação principal do projeto
+
+```
 
 ---
 
