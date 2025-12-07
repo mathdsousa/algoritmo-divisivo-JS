@@ -3,7 +3,7 @@ import scikit_posthocs as sp
 from scipy import stats
 
 ############################# Teste de Hipótese #############################
-df = pandas.read_csv('./Metricas/davies.csv')
+df = pandas.read_csv('./Metricas/silhouette.csv')
 # Converte para matriz (numpy)
 dados = df.to_numpy()
 
